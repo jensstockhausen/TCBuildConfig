@@ -7,7 +7,15 @@ import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.sequential
 
 
-object MainProject : Project({
+class MainProject() : Project({
+
+    subProject(ProjectChain(branch = "main"))
+
+})
+
+class ProjectChain(branch : String) : Project({
+    name = "MainProject on $branch"
+    id("MainProject_On_$branch")
 
     val bts = sequential {
 
