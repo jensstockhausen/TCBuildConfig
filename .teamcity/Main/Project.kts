@@ -25,8 +25,9 @@ object MainProject : Project({
                 buildType(BuildRunTests(projectName = "PrjB"))
             }
 
-            buildType(BuildRunTests(projectName = "Integ_PrjA_PrjB"))
         }
+
+        buildType(BuildRunTests(projectName = "Integ_PrjA_PrjB"))
 
     }.buildTypes()
 
