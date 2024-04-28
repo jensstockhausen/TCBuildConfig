@@ -9,12 +9,14 @@ import jetbrains.buildServer.configs.kotlin.sequential
 
 object MainProject : Project({
 
-    sequential {
+    val bts = sequential {
 
         buildType(BuildCheckSystem)
         buildType(BuildCompileProject)
 
-    }
+    }.buildTypes()
+
+    bts.forEach { bt -> buildType(bt)}
 
 })
 
