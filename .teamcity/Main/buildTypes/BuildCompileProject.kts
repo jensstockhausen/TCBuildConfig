@@ -6,9 +6,10 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-class BuildCompileProject() : BuildType({
-    id = RelativeId("BuildCompileProject")
-    name = "Main.buildTypes.BuildCompileProject"
+class BuildCompileProject(projectName: String) : BuildType({
+
+    id = RelativeId("BuildCompileProject_$projectName")
+    name = "BuildCompileProject for $projectName"
 
     vcs {
     }
@@ -17,7 +18,10 @@ class BuildCompileProject() : BuildType({
         script {
             name = "compile"
             id = "compile"
-            scriptContent = "echo ${'$'}PWD > info.txt"
+            scriptContent = """
+                echo ${'$'}PWD > info.txt
+                echo $projectName >> info.txt
+            """.trimIndent()
         }
     }
 

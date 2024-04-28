@@ -11,7 +11,11 @@ object MainProject : Project({
     val bts = sequential {
 
         buildType(BuildCheckSystem())
-        buildType(BuildCompileProject())
+
+        parallel {
+            buildType(BuildCompileProject(projectName = "PrjA"))
+            buildType(BuildCompileProject(projectName = "PrjB"))
+        }
 
     }.buildTypes()
 
