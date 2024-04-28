@@ -7,7 +7,7 @@ import jetbrains.buildServer.configs.kotlin.RelativeId
 
 
 object MainProject : Project({
-    id = RelativeId("MainProject")
+    id("MainProject")
     name = "Main.Project"
     parentId("ROOT")
 
