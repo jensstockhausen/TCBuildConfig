@@ -6,10 +6,10 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-class BuildRunTests(projectName: String) : BuildType({
+class BuildRunTests(branch : String, projectName: String) : BuildType({
 
-    id = RelativeId("BuildRunTests_$projectName")
-    name = "BuildRunTests for $projectName"
+    id = RelativeId("BuildRunTests_$projectName" + "_$branch")
+    name = "BuildRunTests for $projectName on$branch "
 
     vcs {
     }

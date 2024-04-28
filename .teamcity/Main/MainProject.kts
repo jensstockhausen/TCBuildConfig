@@ -10,6 +10,7 @@ import jetbrains.buildServer.configs.kotlin.sequential
 class MainProject() : Project({
 
     subProject(ProjectChain(branch = "main"))
+    subProject(ProjectChain(branch = "rel"))
 
 })
 
@@ -19,23 +20,23 @@ class ProjectChain(branch : String) : Project({
 
     val bts = sequential {
 
-        buildType(BuildCheckSystem())
+        buildType(BuildCheckSystem(branch = branch))
 
         parallel {
 
             sequential {
-                buildType(BuildCompileProject(projectName = "PrjA"))
-                buildType(BuildRunTests(projectName = "PrjA"))
+                buildType(BuildCompileProject(projectName = "PrjA", branch = branch))
+                buildType(BuildRunTests(projectName = "PrjA", branch = branch))
             }
 
             sequential {
-                buildType(BuildCompileProject(projectName = "PrjB"))
-                buildType(BuildRunTests(projectName = "PrjB"))
+                buildType(BuildCompileProject(projectName = "PrjB", branch = branch))
+                buildType(BuildRunTests(projectName = "PrjB", branch = branch))
             }
 
         }
 
-        buildType(BuildRunTests(projectName = "Integ_PrjA_PrjB"))
+        buildType(BuildRunTests(projectName = "Integ_PrjA_PrjB", branch = branch))
 
     }.buildTypes()
 

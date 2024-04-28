@@ -6,10 +6,10 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-class BuildCompileProject(projectName: String) : BuildType({
+class BuildCompileProject(branch : String, projectName: String) : BuildType({
 
-    id = RelativeId("BuildCompileProject_$projectName")
-    name = "BuildCompileProject for $projectName"
+    id = RelativeId("BuildCompileProject_$projectName" + "_$branch")
+    name = "BuildCompileProject for $projectName on $branch"
 
     vcs {
     }
