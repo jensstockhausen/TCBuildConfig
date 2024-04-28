@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-object BuildCheckSystem : BuildType({
+class BuildCheckSystem() : BuildType({
     id = RelativeId("BuildCheckSystem")
     name = "Main.buildTypes.BuildCheckSystem"
 

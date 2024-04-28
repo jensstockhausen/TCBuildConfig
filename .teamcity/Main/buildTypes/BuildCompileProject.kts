@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-object BuildCompileProject : BuildType({
+class BuildCompileProject() : BuildType({
     id = RelativeId("BuildCompileProject")
     name = "Main.buildTypes.BuildCompileProject"
 
