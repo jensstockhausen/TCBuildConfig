@@ -1,6 +1,3 @@
-package Main
-
-import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.project
 import jetbrains.buildServer.configs.kotlin.version
 

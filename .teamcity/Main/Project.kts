@@ -7,9 +7,6 @@ import jetbrains.buildServer.configs.kotlin.RelativeId
 
 
 object MainProject : Project({
-    id("MainProject")
-    name = "Main.Project"
-    parentId("ROOT")
 
     buildType(BuildCheckSystem)
     buildType(BuildCompileProject)
