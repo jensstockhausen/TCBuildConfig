@@ -25,8 +25,20 @@ class ProjectChain(branch : String) : Project({
         parallel {
 
             sequential {
-                buildType(BuildCompileProject(projectName = "PrjA", branch = branch))
-                buildType(BuildRunTests(projectName = "PrjA", branch = branch))
+
+                val c = BuildCompileProject(projectName = "PrjA", branch = branch)
+                val t = BuildRunTests(projectName = "PrjA", branch = branch)
+
+                t.dependencies {
+                    artifacts(c){
+                        artifactRules = "*.txt => ./"
+                        cleanDestination = true
+                    }
+                }
+
+
+                buildType(c)
+                buildType(t)
             }
 
             sequential {

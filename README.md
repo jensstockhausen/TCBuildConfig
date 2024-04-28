@@ -4,6 +4,9 @@ Teamcity Build Configuration
 
 # Reading Material
 
+Documentation:
+- [TeamCity Kotlin DSL](https://www.jetbrains.com/help/teamcity/kotlin-dsl-documentation/2024.03/index.html)
+
 
 Blog:
 - [Configuration as Code, Part 2: Working with Kotlin Scripts](https://blog.jetbrains.com/teamcity/2019/03/configuration-as-code-part-2-working-with-kotlin-scripts/)
