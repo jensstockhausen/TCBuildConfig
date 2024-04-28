@@ -2,6 +2,7 @@ package Main
 
 import Main.buildTypes.BuildCheckSystem.BuildCheckSystem
 import Main.buildTypes.BuildCompileProject.BuildCompileProject
+import Main.buildTypes.BuildRunTests.BuildRunTests
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.sequential
 
@@ -13,8 +14,18 @@ object MainProject : Project({
         buildType(BuildCheckSystem())
 
         parallel {
-            buildType(BuildCompileProject(projectName = "PrjA"))
-            buildType(BuildCompileProject(projectName = "PrjB"))
+
+            sequential {
+                buildType(BuildCompileProject(projectName = "PrjA"))
+                buildType(BuildRunTests(projectName = "PrjA"))
+            }
+
+            sequential {
+                buildType(BuildCompileProject(projectName = "PrjB"))
+                buildType(BuildRunTests(projectName = "PrjB"))
+            }
+
+            buildType(BuildRunTests(projectName = "Integ_PrjA_PrjB"))
         }
 
     }.buildTypes()
